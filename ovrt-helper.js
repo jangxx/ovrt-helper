@@ -227,7 +227,7 @@ class OVRTOverlay {
 		window.SetOverlaySetting(`${this._uid}`, 8, enable);
 	}
 	
-	setAllowSlowUpdate(enable) {
+	setRenderingEnabled(enable) {
 		window.SetOverlaySetting(`${this._uid}`, 9, enable);
 	}
 }
@@ -424,6 +424,16 @@ class OVRT {
 	
 	sendNotification(title, body) {
 		this._callAPIFunction("SendNotification", [ title, body ]);
+	}
+
+	getUniqueID() {
+		return new Promise((resolve) => {
+			const id = window.registerGlobalCallback(this, result => {
+				return resolve(result[0]);
+			});
+
+			this._callAPIFunction("GetUniqueID", ["callGlobalCallback", id ]);
+		});
 	}
 }
 
