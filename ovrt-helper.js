@@ -279,7 +279,7 @@ class OVRT {
 	_setupEvent(event, enable=true) {
 		switch(event) {
 			case "overlay-touched":
-				return this._callAPIFunction("endHandCollisions", [ enable ]);
+				return this._callAPIFunction("SendHandCollisions", [ enable ]);
 			case "device-position":
 				return this._callAPIFunction("SendDeviceData", [ enable ]);
 			case "overlay-changed":
