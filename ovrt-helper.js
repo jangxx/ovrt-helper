@@ -230,6 +230,10 @@ class OVRTOverlay {
 	setRenderingEnabled(enable) {
 		window.SetOverlaySetting(`${this._uid}`, 9, enable);
 	}
+	
+	setInputBlocked(enable) {
+		window.SetOverlaySetting(`${this._uid}`, 10, enable);
+	}
 }
 
 class OVRT {
