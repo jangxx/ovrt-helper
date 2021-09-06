@@ -230,6 +230,10 @@ class OVRTOverlay {
 	setRenderingEnabled(enable) {
 		window.SetOverlaySetting(`${this._uid}`, 9, enable);
 	}
+	
+	setInputBlocked(enable) {
+		window.SetOverlaySetting(`${this._uid}`, 10, enable);
+	}
 }
 
 class OVRT {
@@ -433,6 +437,16 @@ class OVRT {
 			});
 
 			this._callAPIFunction("GetUniqueID", ["callGlobalCallback", id ]);
+		});
+	}
+	
+	getWristwatchTransform() {
+		return new Promise((resolve) => {
+			const id = window.registerGlobalCallback(this, result => {
+				return resolve(result[0]);
+			});
+
+			this._callAPIFunction("GetWristwatchTransform", ["callGlobalCallback", id ]);
 		});
 	}
 }
