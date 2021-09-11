@@ -24,4 +24,4 @@ const ovr = new OVRT({ function_queue: true }); // function queue allows functio
 
 ## Reference
 
-*TODO: finish the documentation.*
+A full overview and reference for all classes and methods can be found on the [OVR Toolkit Wiki](https://wiki.ovrtoolkit.co.uk/#/CustomApps).
