@@ -228,7 +228,7 @@ class OVRTOverlay {
 	}
 	
 	setRenderingEnabled(enable) {
-		window.SetOverlaySetting(`${this._uid}`, 9, enable);
+		window.SetOverlaySetting(`${this._uid}`, 9, !enable);
 	}
 	
 	setInputBlocked(enable) {
