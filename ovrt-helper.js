@@ -234,6 +234,10 @@ class OVRTOverlay {
 	setInputBlocked(enable) {
 		window.SetOverlaySetting(`${this._uid}`, 10, enable);
 	}
+	
+	setBrowserResolution(width, height) {
+		window.SetBrowserResolution(`${this._uid}`, width, height);
+	}
 }
 
 class OVRT {
