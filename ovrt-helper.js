@@ -437,6 +437,7 @@ class OVRT {
 	getUniqueID() {
 		return new Promise((resolve) => {
 			const id = window.registerGlobalCallback(this, result => {
+				if(result[0] === -1) return reject();
 				return resolve(result[0]);
 			});
 
