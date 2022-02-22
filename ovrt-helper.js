@@ -419,7 +419,7 @@ class OVRT {
 	}
 	
 	broadcastMessage(msg) {
-		this._callAPIFunction("BroadcastMessage", [ msg ]);
+		this._callAPIFunction("BroadcastMessage", [ JSON.stringify(msg) ]);
 	}
 	
 	closeEntryApp() {
