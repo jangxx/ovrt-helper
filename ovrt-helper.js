@@ -235,6 +235,10 @@ class OVRTOverlay {
 		window.SetOverlaySetting(`${this._uid}`, 10, enable);
 	}
 	
+	setRecenter(enable) {
+		window.SetOverlaySetting(`${this._uid}`, 11, enable);
+	}
+	
 	setBrowserResolution(width, height) {
 		window.SetBrowserResolution(`${this._uid}`, width, height);
 	}
@@ -452,6 +456,11 @@ class OVRT {
 
 			this._callAPIFunction("GetWristwatchTransform", ["callGlobalCallback", id ]);
 		});
+	}
+	
+	sendOSCMessageBool(address, msg, type) {
+		// Types: 1 = Int, 2 = Float, 3 = Bool
+		this._callAPIFunction("SendOSCMessage", [ address, msg, type ]);
 	}
 }
 
