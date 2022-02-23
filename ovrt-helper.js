@@ -408,6 +408,16 @@ class OVRT {
 		});
 	}
 	
+	getOverlays() {
+		return new Promise((resolve) => {
+			const id = window.registerGlobalCallback(this, result => {
+				return resolve(result[0]);
+			});
+
+			this._callAPIFunction("GetOverlays", ["callGlobalCallback", id ]);
+		});
+	}
+	
 	isAppRunningWithTitle(title) {
 		return new Promise((resolve) => {
 			const id = window.registerGlobalCallback(this, result => {
