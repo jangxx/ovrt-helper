@@ -458,8 +458,7 @@ class OVRT {
 		});
 	}
 	
-	sendOSCMessageBool(address, msg, type) {
-		// Types: 1 = Int, 2 = Float, 3 = Bool
+	sendOSCMessage(address, msg, type) {
 		this._callAPIFunction("SendOSCMessage", [ address, msg, type ]);
 	}
 }
