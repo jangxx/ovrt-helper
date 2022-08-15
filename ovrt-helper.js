@@ -471,6 +471,10 @@ class OVRT {
 	sendOSCMessage(address, msg, type) {
 		this._callAPIFunction("SendOSCMessage", [ address, msg, type ]);
 	}
+	
+	sendOSCMessageArray(address, msg, type) {
+		this._callAPIFunction("SendOSCMessageArray", [ address, msg ]);
+	}
 }
 
 // uncomment this to use the helper as a common.js module
