@@ -412,6 +412,26 @@ class OVRT {
 		});
 	}
 	
+	getKeyboardBounds() {
+		return new Promise((resolve) => {
+			const id = window.registerGlobalCallback(this, result => {
+				return resolve(JSON.parse(result[0]));
+			});
+
+			window.GetOverlayBounds("GetKeyboardBounds", ["callGlobalCallback", id ]);
+		});
+	}
+	
+	getKeyboardSuggestionsBarEnabled() {
+		return new Promise((resolve) => {
+			const id = window.registerGlobalCallback(this, result => {
+				return resolve(result[0]);
+			});
+
+			window.GetOverlayBounds("GetKeyboardSuggestionsBarEnabled", ["callGlobalCallback", id ]);
+		});
+	}
+	
 	getSceneApplicationName() {
 		return new Promise((resolve) => {
 			const id = window.registerGlobalCallback(this, result => {
@@ -479,6 +499,16 @@ class OVRT {
 			});
 
 			this._callAPIFunction("GetWristwatchTransform", ["callGlobalCallback", id ]);
+		});
+	}
+	
+	getKeyboardTransform() {
+		return new Promise((resolve) => {
+			const id = window.registerGlobalCallback(this, result => {
+				return resolve(JSON.parse(result[0]));
+			});
+
+			this._callAPIFunction("GetKeyboardTransform", ["callGlobalCallback", id ]);
 		});
 	}
 	
