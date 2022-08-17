@@ -26,6 +26,16 @@ window.APIInit = function() {
 	
 };
 
+window.AppOpened = function() {
+	window.GLOBAL_API_READY = true;
+
+	const event = new Event("app-opened");
+	setTimeout(() => { // can't execute the event code in the same context apparently
+		this.dispatchEvent(event);
+	}, 0);
+	
+};
+
 window.DevicePositionUpdate = function(deviceId, deviceInfo) {
 	const event = new CustomEvent("device-position", { detail: {
 		deviceId,
@@ -241,6 +251,10 @@ class OVRTOverlay {
 	
 	setBrowserResolution(width, height) {
 		window.SetBrowserResolution(`${this._uid}`, width, height);
+	}
+	
+	bringToMe() {
+		window.BringToMe(`${this._uid}`);
 	}
 }
 
