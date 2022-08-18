@@ -418,7 +418,7 @@ class OVRT {
 				return resolve(JSON.parse(result[0]));
 			});
 
-			window.GetKeyboardBounds("GetKeyboardBounds", ["callGlobalCallback", id ]);
+			this._callAPIFunction("GetKeyboardBounds", ["callGlobalCallback", id ]);
 		});
 	}
 	
@@ -428,7 +428,7 @@ class OVRT {
 				return resolve(result[0]);
 			});
 
-			window.GetKeyboardSuggestionsBarEnabled("GetKeyboardSuggestionsBarEnabled", ["callGlobalCallback", id ]);
+			this._callAPIFunction("GetKeyboardSuggestionsBarEnabled", ["callGlobalCallback", id ]);
 		});
 	}
 	
