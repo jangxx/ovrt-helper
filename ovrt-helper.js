@@ -519,6 +519,30 @@ class OVRT {
 	sendOSCMessageArray(address, msg, type) {
 		this._callAPIFunction("SendOSCMessageArray", [ address, msg ]);
 	}
+	
+	getProfileList() { 
+		return new Promise((resolve) => { 
+			const id = window.registerGlobalCallback(this, result => { 
+				return resolve(result[0]); 
+			}); 
+ 
+			window.GetOverlayBounds("ovrtGetProfileList", ["callGlobalCallback", id ]); 
+		}); 
+	} 
+	
+	getCurrentProfile() { 
+		return new Promise((resolve) => { 
+			const id = window.registerGlobalCallback(this, result => { 
+				return resolve(result[0]); 
+			}); 
+ 
+			window.GetOverlayBounds("ovrtGetCurrentProfile", ["callGlobalCallback", id ]); 
+		}); 
+	} 
+	
+	switchProfile(profileId) {
+		this._callAPIFunction("ovrtSwitchProfile", [ profileId ]);
+	}
 }
 
 // uncomment this to use the helper as a common.js module
