@@ -273,7 +273,7 @@ class OVRT {
 		window.addEventListener("overlay-touched", evt => this._emit("overlay-touched", evt));
 		window.addEventListener("device-position", evt => this._emit("device-position", evt));
 		window.addEventListener("interacting", evt => this._emit("interacting", evt));
-		window.addEventListener("overlay-message", evt => this._emit("message", evt));
+		window.addEventListener("overlay-message", evt => this._emit("overlay-message", evt));
 		window.addEventListener("overlay-opened", evt => this._emit("overlay-opened", evt));
 		window.addEventListener("overlay-closed", evt => this._emit("overlay-closed", evt));
 		window.addEventListener("overlay-changed", evt => this._emit("overlay-changed", evt));
@@ -364,21 +364,20 @@ class OVRT {
 	getWindowTitles() {
 		return new Promise((resolve) => {
 			const id = window.registerGlobalCallback(this, result => {
-				// Honestly no idea if this should be parsed? It's a Dictionary in C#.
-				return resolve(result[0]);
+				return resolve(JSON.parse(result[0]));
 			});
 
 			this._callAPIFunction("GetWindowTitles", [ "callGlobalCallback", id ]);
 		});
 	}
 	
-	getMonitorCount() {
+	getMonitorNames() {
 		return new Promise((resolve) => {
 			const id = window.registerGlobalCallback(this, result => {
-				return resolve(result[0]);
+				return resolve(JSON.parse(result[0]));
 			});
 
-			this._callAPIFunction("GetMonitorCount", [ "callGlobalCallback", id ]);
+			this._callAPIFunction("GetMonitorNames", [ "callGlobalCallback", id ]);
 		});
 	}
 	
@@ -526,7 +525,7 @@ class OVRT {
 				return resolve(result[0]); 
 			}); 
  
-			window.GetOverlayBounds("ovrtGetProfileList", ["callGlobalCallback", id ]); 
+			this._callAPIFunction("ovrtGetProfileList", ["callGlobalCallback", id ]); 
 		}); 
 	} 
 	
@@ -536,7 +535,7 @@ class OVRT {
 				return resolve(result[0]); 
 			}); 
  
-			window.GetOverlayBounds("ovrtGetCurrentProfile", ["callGlobalCallback", id ]); 
+			this._callAPIFunction("ovrtGetCurrentProfile", ["callGlobalCallback", id ]); 
 		}); 
 	} 
 	
