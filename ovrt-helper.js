@@ -238,7 +238,7 @@ class OVRTOverlay {
 	}
 	
 	setRenderingEnabled(enable) {
-		window.SetOverlaySetting(`${this._uid}`, 9, !enable);
+		window.SetOverlaySetting(`${this._uid}`, 9, enable);
 	}
 	
 	setInputBlocked(enable) {
@@ -522,7 +522,7 @@ class OVRT {
 	getProfileList() { 
 		return new Promise((resolve) => { 
 			const id = window.registerGlobalCallback(this, result => { 
-				return resolve(result[0]); 
+				return resolve(JSON.parse(result[0])); 
 			}); 
  
 			this._callAPIFunction("ovrtGetProfileList", ["callGlobalCallback", id ]); 
