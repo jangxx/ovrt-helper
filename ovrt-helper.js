@@ -144,7 +144,7 @@ class OVRTOverlay {
 	}
 
 	setContent(type, content) {
-		window.SetContents(`${this._uid}`, type, JSON.stringify(content));
+		window.SetContents(`${this._uid}`, type, type==0?JSON.stringify(content):content);//only browser data should be stringified
 	}
 
 	setPosition(x, y, z) {
